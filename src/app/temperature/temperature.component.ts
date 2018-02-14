@@ -3,6 +3,7 @@ import {Chart} from 'chart.js';
 import {DataService} from "../data.service";
 import {GraphService} from "../graph.service";
 import {Subscription} from "rxjs/Subscription";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-temperature',
@@ -15,12 +16,18 @@ export class TemperatureComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private dataService: DataService, private graphService: GraphService) {
+  constructor(private dataService: DataService, private graphService: GraphService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.subscription = this.graphService.filterChangeStream.subscribe((val) => {
       this.reloadGraph(val);
+    });
+    this.activatedRoute.paramMap.subscribe((param)=>{
+        console.log(param.has('fromDate'));
+        console.log(param.get('fromDate'));
+        console.log(param.has('toDate'));
+        console.log(param.get('toDate'));
     });
   }
 
