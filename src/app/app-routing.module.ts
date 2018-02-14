@@ -6,9 +6,9 @@ import {PrecipitationComponent} from "./precipitation/precipitation.component";
 const routes: Routes = [
   { path: '',redirectTo: 'temperature!', pathMatch: 'full' },
   { path: 'temperature!', component: TemperatureComponent },
-  { path: 'precipitation!', component: PrecipitationComponent }/*,
-  { path: 'temperature!fromDate{fromDate};toDate{toDate}=', component: TemperatureComponent },
-  { path: 'precipitation!fromDate{fromDate}', component: PrecipitationComponent }*/
+  { path: 'precipitation!', component: PrecipitationComponent },
+  { path: 'temperature/:fromDate/:toDate', component: TemperatureComponent },
+ /* { path: 'precipitation!fromDate{fromDate}', component: PrecipitationComponent }*/
 ];
 
 @NgModule({
